@@ -1,12 +1,16 @@
-[gd_scene format=3 uid="uid://dkvw21rufyyhg"]
+[gd_scene load_steps=2 format=3 uid="uid://dkvw21rufyyhg"]
 
-[node name="WinInterface" type="Control"]
+[ext_resource type="Script" path="res://WinInterface.cs" id="1_mlxgn"]
+
+[node name="WinInterface" type="Control" node_paths=PackedStringArray("_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mlxgn")
+_label = NodePath("Label")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -31,6 +35,6 @@ offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
-text = "You solved the very intricate puzzle!"
+text = "placeholder text"
 horizontal_alignment = 1
 vertical_alignment = 1

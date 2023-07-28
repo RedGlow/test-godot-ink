@@ -16,7 +16,7 @@
 = Door
     +   [-- Door]
         You cross the threshold to the second room with hesitation.
-        -> goTo(-> SecondRoom)
+        -> go_to(-> SecondRoom)
     -   -> top
 
 
@@ -96,6 +96,6 @@
 
 = win_check
     { first_cube has key and second_cube has gem:
-        ~ win()
+        ~ win("You solved the very intricate puzzle!")
     }
     -> DONE

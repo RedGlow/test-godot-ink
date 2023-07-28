@@ -1,11 +1,7 @@
-VAR IN_GODOT = false
-
-
-
 // OBJECTS AND INVENTORY MANAGEMENT
 
 LIST Objects = key, gem
-VAR second_room = (key, gem)
+VAR second_room = (gem, key)
 VAR inventory = ()
 VAR first_cube = ()
 VAR second_cube = ()
@@ -21,18 +17,19 @@ VAR second_cube = ()
 
 // ROOM MOVEMENT
 
-=== goTo(-> divert)
-    ~ goToRoom(divert)
+=== go_to(-> divert)
+    ~ go_to_room(divert)
     -> divert
 
-EXTERNAL goToRoom(divert)
-=== function goToRoom(divert)
+EXTERNAL go_to_room(divert)
+=== function go_to_room(divert)
     ~ temp a = 0
 
 
 
 // WIN
 
-EXTERNAL win()
-=== function win()
-    YOU WON
+EXTERNAL win(text)
+=== function win(text)
+    {text}
+    [the game will end here]

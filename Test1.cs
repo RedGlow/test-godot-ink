@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Godot;
@@ -16,18 +14,19 @@ public partial class Test1 : Node3D
 
     [Export] private Fade _fade;
 
-    [Export] private Control _winInterface;
+    [Export] private WinInterface _winInterface;
 
     private Node3D _currentScene;
 
     public override void _Ready()
     {
         _inkStory.Errored += OnError;
-        _inkStory.BindExternalFunction("goToRoom",
-            new Callable(this, MethodName.GoToRoomInk));
-        _inkStory.BindExternalFunction("win",
-            () => _winInterface.Visible = true);
-        _inkStory.StoreVariable("IN_GODOT", true);
+        _inkStory.BindExternalFunction<Ink.Runtime.Path>(
+            "go_to_room",
+            GoToRoomInk);
+        _inkStory.BindExternalFunction<string>(
+            "win",
+            _winInterface.Show);
         _inkStory.Continue();
     }
 
@@ -84,8 +83,9 @@ public partial class Test1 : Node3D
         }
     }
 
-    private void GoToRoomInk(InkPath roomDivert)
+    private void GoToRoomInk(Ink.Runtime.Path roomDivert)
     {
+        // just run the task, we don't need to know when it finishes
         _ = GoToRoom(roomDivert.ToString());
     }
 
