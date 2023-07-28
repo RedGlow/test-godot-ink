@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8fyuo01budmy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cy2tj"]
+
+[node name="RoomWalls" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(14.15, 0, 0, 0, 12.08, 0, 0, 0, 1, 0, 0, -5.71369)
+mesh = SubResource("BoxMesh_cy2tj")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(16.575, 0, 0, 0, -5.28034e-07, -1, 0, 12.08, -4.37114e-08, 0, -6.37126, 0)
+mesh = SubResource("BoxMesh_cy2tj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.18516e-07, 0, 1, 0, 12.08, 0, -14.15, 0, -4.37114e-08, -7.55518, 0, 0)
+mesh = SubResource("BoxMesh_cy2tj")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.18516e-07, 0, 1, 0, 12.08, 0, -14.15, 0, -4.37114e-08, 6.66532, 0, 0)
+mesh = SubResource("BoxMesh_cy2tj")

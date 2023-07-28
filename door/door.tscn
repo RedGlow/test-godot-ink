@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://388nod5e3tr0"]
+
+[ext_resource type="Script" path="res://Interactable.cs" id="1_vgq0b"]
+[ext_resource type="PackedScene" uid="uid://co52i5xtijcnd" path="res://door/uploads_files_4335498_z-+door.gltf" id="2_flfr2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3g572"]
+size = Vector3(1, 2.03166, 0.113296)
+
+[node name="Door" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.465, -1.028)
+script = ExtResource("1_vgq0b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.493888, 0.980292, -0.0481649)
+shape = SubResource("BoxShape3D_3g572")
+
+[node name="uploads_files_4335498_z-+door" parent="." instance=ExtResource("2_flfr2")]

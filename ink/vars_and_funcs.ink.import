@@ -1,0 +1,16 @@
+[remap]
+
+importer="ink"
+type="Resource"
+uid="uid://coqe207p5irur"
+path="res://.godot/imported/vars_and_funcs.ink-445f19a972590b9672ce33dcdaf89646.res"
+
+[deps]
+
+source_file="res://ink/vars_and_funcs.ink"
+dest_files=["res://.godot/imported/vars_and_funcs.ink-445f19a972590b9672ce33dcdaf89646.res"]
+
+[params]
+
+is_main_file=false
+compress=true

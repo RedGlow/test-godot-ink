@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7adkfk4163rb"]
+
+[ext_resource type="Script" path="res://Test1.cs" id="1_8m2lj"]
+[ext_resource type="Resource" uid="uid://dbxgy2fl4mthc" path="res://ink/0_main.ink" id="2_jcyj2"]
+[ext_resource type="PackedScene" uid="uid://bk5aalohp048j" path="res://dialogue.tscn" id="3_ybhce"]
+[ext_resource type="PackedScene" uid="uid://dpxf32nxklvh3" path="res://fade.tscn" id="4_wesey"]
+[ext_resource type="PackedScene" uid="uid://dkvw21rufyyhg" path="res://win_interface.tscn" id="5_j2xt1"]
+
+[sub_resource type="Environment" id="Environment_olgd8"]
+tonemap_mode = 2
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+glow_strength = 0.7
+glow_bloom = 0.39
+glow_blend_mode = 1
+glow_hdr_threshold = 1.94
+
+[node name="MainScene" type="Node3D" node_paths=PackedStringArray("_dialogue", "_fade", "_winInterface")]
+script = ExtResource("1_8m2lj")
+_inkStory = ExtResource("2_jcyj2")
+_dialogue = NodePath("Dialogue")
+_fade = NodePath("Fade")
+_winInterface = NodePath("WinInterface")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.934204, -0.114375, 0.337906, 0, 0.94721, 0.320613, -0.356738, -0.299518, 0.884888, -7.72404, 1.40015, 1.89016)
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.958343, -0.0898486, 0.271121, 0, 0.949233, 0.314572, -0.285621, -0.301468, 0.909691, 0.745236, 1.19849, 2.51332)
+
+[node name="Dialogue" parent="." instance=ExtResource("3_ybhce")]
+_inkStory = ExtResource("2_jcyj2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_olgd8")
+
+[node name="Fade" parent="." instance=ExtResource("4_wesey")]
+
+[node name="WinInterface" parent="." instance=ExtResource("5_j2xt1")]
+visible = false

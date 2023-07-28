@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://pnwn1y2egxb6"]
+
+[ext_resource type="PackedScene" uid="uid://388nod5e3tr0" path="res://door/door.tscn" id="4_i4odl"]
+[ext_resource type="PackedScene" uid="uid://bq4kjuc4qu3t4" path="res://gem/gem.tscn" id="5_l0tnr"]
+[ext_resource type="PackedScene" uid="uid://drnfa5gi4rrfr" path="res://glTF/key.tscn" id="5_wygj2"]
+[ext_resource type="PackedScene" uid="uid://b8fyuo01budmy" path="res://room_walls.tscn" id="8_35ivm"]
+
+[node name="FirstRoom" type="Node3D"]
+
+[node name="RoomWalls" parent="." instance=ExtResource("8_35ivm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.743, 5.895, 3.887)
+
+[node name="Gem" parent="." instance=ExtResource("5_l0tnr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.218431, 0.311776)
+
+[node name="Key" parent="." instance=ExtResource("5_wygj2")]
+
+[node name="Door" parent="." instance=ExtResource("4_i4odl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.29281)

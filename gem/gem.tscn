@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://bq4kjuc4qu3t4"]
+
+[ext_resource type="Script" path="res://Interactable.cs" id="1_yg0ox"]
+[ext_resource type="PackedScene" uid="uid://djgtawx1ha2us" path="res://gem/GLB.glb" id="2_qh0gx"]
+[ext_resource type="Texture2D" uid="uid://d2tieudqb4ygw" path="res://gem/TEXTURE/9.jpg" id="3_kj8nc"]
+[ext_resource type="Texture2D" uid="uid://823bjv7gc23k" path="res://gem/TEXTURE/Dimand_lambert1_Normal.png" id="4_gsc8q"]
+[ext_resource type="Texture2D" uid="uid://dndm5e4c45a2s" path="res://gem/TEXTURE/Dimand_lambert1_Roughness.png" id="5_woj45"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxnst"]
+size = Vector3(0.949098, 0.835305, 0.991128)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t51o5"]
+albedo_texture = ExtResource("3_kj8nc")
+roughness_texture = ExtResource("5_woj45")
+roughness_texture_channel = 4
+emission_enabled = true
+emission = Color(0.580392, 0.701961, 0, 1)
+emission_energy_multiplier = 4.0
+normal_enabled = true
+normal_texture = ExtResource("4_gsc8q")
+
+[sub_resource type="Animation" id="Animation_rmsye"]
+resource_name = "floating_animation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GLB:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 4.71239, 0), Vector3(0, 6.26573, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GLB:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.11, 0), Vector3(0, -0.05, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_loaws"]
+_data = {
+"floating_animation": SubResource("Animation_rmsye")
+}
+
+[node name="Gem" type="StaticBody3D"]
+script = ExtResource("1_yg0ox")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0217605, 0.402571, 0)
+shape = SubResource("BoxShape3D_nxnst")
+
+[node name="GLB" parent="." instance=ExtResource("2_qh0gx")]
+transform = Transform3D(-8.43255, 0, -28.7905, 0, 30, 0, 28.7905, 0, -8.43255, 0, -0.032638, 0)
+
+[node name="Dimant" parent="GLB" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_t51o5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422356, 0)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "floating_animation"
+libraries = {
+"": SubResource("AnimationLibrary_loaws")
+}
+
+[editable path="GLB"]
